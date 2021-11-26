@@ -25,4 +25,57 @@ public class Formula extends JFrame {
     private JRadioButton radio2 = new JRadioButton("Формула 2");
     Double resultat = 0.0;
     Double sum = 0.0;
+
+
+    // классы для расчетных формул
+    public Double formula1(Double x, Double y, Double z) {
+        return Math.pow((Math.pow((Math.sin(y) + y * y + Math.pow(2.7, Math.cos(y))), 2) + Math.pow((Math.log(z * z) + Math.sin(3.14 + x + x)), 3)), 1 / 2);
+    }
+
+    public Double formula2(Double x, Double y, Double z) {
+        return Math.pow(y, 1 / 2) * (3 * Math.pow(z, x) / Math.pow((1 + Math.pow(y, 3)), 1 / 2));
+    }
+
+    public Formula() {
+        super(""); // заголовок окна
+        this.setBounds(200, 200, 350, 300); // размеры окна
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // обработка закрытия окна
+        Container container = this; // контейнер под содержимое
+        container.setLayout(new GridLayout(8, 3, 3, 2)); // в виде таблицы
+        // добавляем содержимое
+        ButtonGroup group = new ButtonGroup(); // группируем радиокнопки
+        group.add(radio1);
+        group.add(radio2);
+        container.add(radio1);
+        radio1.setSelected(true);
+        container.add(radio2);
+
+        container.add(label1);
+        label1.setHorizontalAlignment(SwingConstants.RIGHT);
+        container.add(input_x);
+        input_x.setBackground(Color.YELLOW);
+
+        container.add(label2);
+        container.add(input_y);
+        input_y.setBackground(Color.GRAY);
+
+        container.add(label3);
+        container.add(input_z);
+        input_z.setBackground(Color.GREEN);
+
+        container.add(label4);
+        container.add(result);
+        result.setBackground(Color.MAGENTA);
+
+        container.add(label5);
+        container.add(memory);
+        memory.setBackground(Color.LIGHT_GRAY);
+
+        ButtonGroup group1 = new ButtonGroup();
+        group1.add(button1);
+        group1.add(button2);
+        group1.add(button3);
+        group1.add(button4);
+
+    }
 }
