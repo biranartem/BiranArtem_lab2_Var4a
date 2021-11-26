@@ -77,5 +77,55 @@ public class Formula extends JFrame {
         group1.add(button3);
         group1.add(button4);
 
+        button1.addActionListener(new ButtonEvent1()); // обработка нажатия кнопки
+        container.add(button1);
+        button1.setBackground(Color.PINK); // задаем цвет кнопок
+
+        button2.addActionListener(new ButtonEvent2());
+        container.add(button2);
+        button2.setBackground(Color.CYAN);
+
+        button3.addActionListener(new ButtonEvent3());
+        container.add(button3);
+        button3.setBackground(Color.BLUE);
+
+        button4.addActionListener(new ButtonEvent4());
+        container.add(button4);
+        button4.setBackground(Color.YELLOW);
+    }
+
+    // обрабатываем нажатие каждой кнопки
+    class ButtonEvent1 implements ActionListener { // кнопка Вычислить
+        public void actionPerformed (ActionEvent i) {
+            Double x = Double.parseDouble(input_x.getText()); // из текста в число
+            Double y = Double.parseDouble(input_y.getText());
+            Double z = Double.parseDouble(input_z.getText());
+            if(radio1.isSelected()) // если флаг на кнопке 1
+                resultat = formula1(x, y, z);
+            else
+                resultat = formula2(x, y, z);
+            result.setText(resultat.toString()); // результат в текст и вывести в текстовом поле
+        }
+    }
+
+    class ButtonEvent2 implements ActionListener { // кнопка Очистить
+        public void actionPerformed (ActionEvent i) {
+            input_x.setText("0");
+            input_y.setText("0");
+            input_z.setText("0");
+            result.setText("0");
+        }
+    }
+    class ButtonEvent3 implements ActionListener { // кнопка М+
+        public void actionPerformed (ActionEvent i) {
+            sum = sum + resultat;
+            memory.setText(sum.toString());
+        }
+    }
+    class ButtonEvent4 implements ActionListener { // кнопка МС
+        public void actionPerformed (ActionEvent i) {
+            sum = 0.0;
+            memory.setText("0");
+        }
     }
 }
